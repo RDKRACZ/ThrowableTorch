@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "throwabletorch:items/throwable_magma_torch"
-  }
-}
