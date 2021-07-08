@@ -1,24 +1,15 @@
 package daniking.throwabletorch.client;
 
-import daniking.throwabletorch.ThrowableTorch;
-
-import daniking.throwabletorch.registry.ModEntityRenderer;
+import daniking.throwabletorch.client.network.packet.ModEntityPacket;
+import daniking.throwabletorch.common.registry.ModEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 
-import net.minecraft.util.Identifier;
-
-
-
-public class ThrowableTorchClient implements ClientModInitializer
-{
-
-    public static final Identifier PacketID = new Identifier(ThrowableTorch.MODID, "throwable_torch");
+public class ThrowableTorchClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModEntityPacket.receiveEntityPacket();
+        ModEntityPacket.handle();
         ModEntityRenderer.EntityRenderer();
     }
-
 }
 
