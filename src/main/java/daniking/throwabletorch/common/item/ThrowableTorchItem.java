@@ -25,42 +25,42 @@ public class ThrowableTorchItem extends Item {
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 1.0F, 1F);
+        ItemStack stackInHand = user.getStackInHand(hand);
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 1.0F, 1.0F);
 
-        if (!user.abilities.creativeMode) {
-            itemStack.decrement(1);
+        if (!user.getAbilities().creativeMode) {
+            stackInHand.decrement(1);
         }
 
         if (!world.isClient) {
-            switch (type){
-                case SLIME:
+            switch (type) {
+                case SLIME -> {
                     ThrowableSlimeTorchEntity slimeTorchEntity = new ThrowableSlimeTorchEntity(world, user);
-                    slimeTorchEntity.setItem(itemStack);
-                    slimeTorchEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 0F);
+                    slimeTorchEntity.setItem(stackInHand);
+                    slimeTorchEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
                     world.spawnEntity(slimeTorchEntity);
-                    break;
-                case CLAY:
+                }
+                case CLAY -> {
                     ThrowableClayTorchEntity clayTorchEntity = new ThrowableClayTorchEntity(world, user);
-                    clayTorchEntity.setItem(itemStack);
-                    clayTorchEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 0F);
+                    clayTorchEntity.setItem(stackInHand);
+                    clayTorchEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
                     world.spawnEntity(clayTorchEntity);
-                    break;
-                case MAGMA:
+                }
+                case MAGMA -> {
                     ThrowableMagmaTorchEntity magmaTorchEntity = new ThrowableMagmaTorchEntity(world, user);
-                    magmaTorchEntity.setItem(itemStack);
-                    magmaTorchEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 0F);
+                    magmaTorchEntity.setItem(stackInHand);
+                    magmaTorchEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
                     world.spawnEntity(magmaTorchEntity);
-                    break;
-                case HONEYCOMB:
+                }
+                case HONEYCOMB -> {
                     ThrowableHoneyCombEntity honeyCombEntity = new ThrowableHoneyCombEntity(world, user);
-                    honeyCombEntity.setItem(itemStack);
-                    honeyCombEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 0F);
+                    honeyCombEntity.setItem(stackInHand);
+                    honeyCombEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
                     world.spawnEntity(honeyCombEntity);
-                    break;
+                }
             }
         }
 
-        return TypedActionResult.success(itemStack, world.isClient());
+        return TypedActionResult.success(stackInHand, world.isClient());
     }
 }

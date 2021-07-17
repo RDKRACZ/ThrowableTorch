@@ -34,7 +34,7 @@ public class ThrowableMagmaTorchEntity extends ThrowableTorchEntity{
     protected void onEntityHit(EntityHitResult entityHitResult) {
         entityHitResult.getEntity().damage(DamageSource.thrownProjectile(this, this.getOwner()), 1F);
         entityHitResult.getEntity().setOnFireFor(5);
-        this.remove();
+        this.discard();
 
     }
 }

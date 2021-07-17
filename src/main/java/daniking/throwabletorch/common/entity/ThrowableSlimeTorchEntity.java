@@ -19,14 +19,16 @@ public class ThrowableSlimeTorchEntity extends ThrowableTorchEntity
         super(ModEntityTypes.THROWABLE_SLIME_TORCH_ENTITY, world);
     }
 
+    public ThrowableSlimeTorchEntity (World world, LivingEntity player) {
+        super(ModEntityTypes.THROWABLE_SLIME_TORCH_ENTITY, world, player);
+    }
+
     @Override
     protected Item getDefaultItem() {
         return ModRegistry.THROWABLE_SLIME_TORCH;
     }
 
-    public ThrowableSlimeTorchEntity (World world, LivingEntity player) {
-        super(ModEntityTypes.THROWABLE_SLIME_TORCH_ENTITY, world, player);
-    }
+
 
 
 
